@@ -1,6 +1,6 @@
 //ejercicio3
 
-fetch('https://wikipedia.org')
+fetch('https://www.google.com.mx/?hl=es')
 .then(resp => resp.text())
 .then(html => {
     document.open()
