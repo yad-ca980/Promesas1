@@ -6,7 +6,6 @@
 
 async function realizarOperacionesAsincronas(arrayDeFunciones) {
     try {
-      // Utilizando Promise.all para ejecutar todas las promesas en paralelo
       await Promise.all(arrayDeFunciones.map(funcion => funcion()));
     } catch (error) {
       throw error;
@@ -17,6 +16,10 @@ async function realizarOperacionesAsincronas(arrayDeFunciones) {
     (resolve) => setTimeout(() =>
       resolve('Promesa 1 completa'), 900)
   );
+//   const Promesa2 = () => new Promise(
+//     (resolve, reject) => setTimeout(() =>
+//       resolve('Promesa 2 completa'), 800)
+//   );
   
   const Promesa2 = () => new Promise(
     (resolve, reject) => setTimeout(() =>
