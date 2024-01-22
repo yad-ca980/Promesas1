@@ -18,4 +18,4 @@ fetch('https://reqres.in/api/users', {
 .catch(error => {
     console.log('error en la peticion');
     console.log(error)
-;})
+})
