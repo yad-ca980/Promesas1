@@ -1,29 +1,22 @@
-// Crea una función promesaConTimeout que tome una promesa y un tiempo límite en milisegundos. 
-// La función debe resolver la promesa dentro del tiempo límite. 
-// Si la promesa no se resuelve en el tiempo especificado, 
-// debería rechazar con un mensaje indicando que se ha agotado el tiempo.
+// Crea una función esperarNVeces que tome un número n y devuelva una promesa.
+// Esta promesa debe resolverse con el mensaje "¡He esperado N veces!" después de esperar 1 
+// segundo por cada número del 1 al n. Por ejemplo, si n es 3, la promesa debería resolverse 
+// después de esperar 1 segundo, luego 2 segundos, y finalmente 3 segundos.
 
-function promesaConTimeout(promesa, tiempoLimite) {
-    const promesaConTimeout = new Promise((resolve, reject) => {
-      const temporizador = setTimeout(() => {
-        reject("Tiempo agotado");
-      }, tiempoLimite);
-  
-      promesa.then((resultado) => {
-        clearTimeout(temporizador);
-        resolve(resultado);
-      }).catch((error) => {
-        clearTimeout(temporizador);
-        reject(error);
-      });
+
+function esperarNVeces(n) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('¡He esperado ' + n + ' veces!');
+            resolve();
+        }, n * 1000);
     });
-  
-    return promesaConTimeout;
 }
 
-const promesaLenta = new Promise((resolve) => setTimeout(() => resolve("¡Promesa resuelta!"), 2000));
-const tiempoLimite = 1000;
+async function esperar3Veces() {
+    await esperarNVeces(1);
+    await esperarNVeces(2);
+    await esperarNVeces(3);
+}
 
-promesaConTimeout(promesaLenta, tiempoLimite)
-    .then((resultado) => console.log(resultado))
-    .catch((error) => console.error("Error:", error));
+esperar3Veces();
