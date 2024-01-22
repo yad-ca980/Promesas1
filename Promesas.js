@@ -1,17 +1,26 @@
-//Promesas 2
+//Promesa 5
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+const sumarLento = (numero) => {
+    return new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                 resolve(numero + 1);
+                // reject("Error")
+            }, 800);
+        }
+    )
+}
 
-let promesaConError = new Promise((resolve, reject) => {
-    reject("algo salio mal..");
-
-});
-
-promesaConError.then((mensaje) => { console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+const sumarRapido = (numero) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(numero + 1);
+        }, 300);
+    }
+    )
+}
+// Si una falla fallan todas
+Promise.all(([ sumarRapido(6),sumarLento(5), true, 'Hola' ]))
+.then((resultados) => {
+    console.log(resultados);
+}).catch(console.log);
