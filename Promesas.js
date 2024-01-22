@@ -1,17 +1,18 @@
-//Promesas 2
+//Promesas 4
+const ejecutarContTimeout = (ms) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        resolve(`Operación completada despues de ${ms} milisegundos`);
+        }, ms);
+    });
+    }
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+const tiempoLimite = 2000;
 
-let promesaConError = new Promise((resolve, reject) => {
-    reject("algo salio mal..");
-
-});
-
-promesaConError.then((mensaje) => { console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+ejecutarContTimeout(tiempoLimite)
+    .then((mensaje) => {
+        console.log(mensaje);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
