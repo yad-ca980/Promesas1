@@ -1,17 +1,12 @@
-//Promesas 2
+//Promesa 6
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
-
-let promesaConError = new Promise((resolve, reject) => {
-    reject("algo salio mal..");
-
-});
-
-promesaConError.then((mensaje) => { console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+const sumarLento = (numero) => {
+    return new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                 // resolve(numero + 1);
+               reject("Error")
+            }, 800);
+        }
+    )
+}
