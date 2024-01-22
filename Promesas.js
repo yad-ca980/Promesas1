@@ -1,10 +1,10 @@
-//ejercicio2
+//ejercicio3
 
-fetch("http://fakestoreapi.com/products/1")
-  .then((res) => res.json())
-  .then((respJson) =>{
-    console.log(respJson);
-    console.log(respJson.price);
+fetch('https://wikipedia.org')
+.then(resp => resp.text())
+.then(html => {
+    document.open()
+    document.write(html)
+    document.close()
+})
 
-  })
-  .catch((error) => console.log(error));
