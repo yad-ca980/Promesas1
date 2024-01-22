@@ -1,3 +1,8 @@
+// Crea una función promesaConTimeout que tome una promesa y un tiempo límite en milisegundos. 
+// La función debe resolver la promesa dentro del tiempo límite. 
+// Si la promesa no se resuelve en el tiempo especificado, 
+// debería rechazar con un mensaje indicando que se ha agotado el tiempo.
+
 function promesaConTimeout(promesa, tiempoLimite) {
     const promesaConTimeout = new Promise((resolve, reject) => {
       const temporizador = setTimeout(() => {
