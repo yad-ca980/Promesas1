@@ -1,17 +1,23 @@
-//Promesas 2
+//Promesas 3
+const cargarDatosAPI = (url) => {
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                else {
+                    throw new Error(`Error en la solicitud ${response.status}: ${response.statusText}`);
+                }
+            })
+            .then(data => resolve(data))
+            .catch(error => reject("Error en la solicitud: " + error.message));
+    });
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+}
 
-let promesaConError = new Promise((resolve, reject) => {
-    reject("algo salio mal..");
+const apiUrl = "https://fakestoreapi.com/products/1";
 
-});
-
-promesaConError.then((mensaje) => { console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+cargarDatosAPI(apiUrl)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
